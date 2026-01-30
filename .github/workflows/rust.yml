@@ -83,11 +83,11 @@ jobs:
 
       - name: Build Flatpak
         if: matrix.os == 'ubuntu-latest'
-        run: flatpak-builder build-dir flatpak/com.hytale.modmanager.json --force-clean
+        run: flatpak-builder --repo=repo build-dir flatpak/com.hytale.modmanager.json --force-clean
 
       - name: Export Flatpak bundle
         if: matrix.os == 'ubuntu-latest'
-        run: flatpak build-bundle build-dir HytaleModManager.flatpak com.hytale.modmanager
+        run: flatpak build-bundle repo HytaleModManager.flatpak com.hytale.modmanager
 
       - name: Upload Flatpak
         if: matrix.os == 'ubuntu-latest'
