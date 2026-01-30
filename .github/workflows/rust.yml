@@ -24,9 +24,6 @@ jobs:
       - name: Install Rust
         uses: dtolnay/rust-toolchain@stable
 
-      - name: Build Release
-        run: cargo build --release
-
       # ---------------- LINUX ----------------
       - name: Install Linux system dependencies
         if: matrix.os == 'ubuntu-latest'
@@ -45,6 +42,9 @@ jobs:
             libappindicator3-dev \
             librsvg2-dev \
             patchelf
+
+      - name: Build Release
+        run: cargo build --release
 
       - name: Build AppImage
         if: matrix.os == 'ubuntu-latest'
